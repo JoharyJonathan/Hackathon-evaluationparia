@@ -18,18 +18,40 @@ export default function CreateExamPage() {
   const [formatType, setFormatType] = useState("");
   const [difficulty, setDifficulty] = useState("");
   const [objective, setObjective] = useState("");
-  const [generatedQuestions, setGeneratedQuestions] = useState([]);
+  const [generatedQuestions, setGeneratedQuestions] = useState<{ question: string; options: string[] }[]>([]);
   const [loading, setLoading] = useState(false);
 
-  const handleGenerateQuestions = async () => {
+const handleGenerateQuestions = async () => {
     setLoading(true);
-    // Construction du prompt à envoyer à l'IA
-    const prompt = `Génère un ${examType} en ${subject} pour le niveau ${level}.
-- Domaine : ${field}
-- Nombre de questions : ${numQuestions}
-- Format : ${formatType}
-- Difficulté : ${difficulty}
-- Objectif : ${objective}`;
+    
+    const response = await fetch('/api/exams/propose/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            exam_type: examType,
+            subject,
+            level,
+            field,
+            num_questions: numQuestions,
+            description,
+            duration,
+            deadline: "", // Ajout d'une valeur par défaut pour deadline
+        }),
+    });
+
+
+
+    if (response.ok) {
+        const data = await response.json();
+        setGeneratedQuestions(data.questions); // Assuming the response contains questions
+        setLoading(false);
+    } else {
+        const errorData = await response.json();
+        console.error("Error generating questions:", errorData.error);
+        setLoading(false);
+    }
     
     console.log("Prompt envoyé à l'IA :", prompt);
 
@@ -116,6 +138,8 @@ export default function CreateExamPage() {
   return (
     <div className="max-w-3xl mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6">Créer un examen généré par IA</h1>
+      
+
       <form className="bg-white p-6 rounded shadow-md">
         {/* Titre de l'examen */}
         <div className="mb-4">
