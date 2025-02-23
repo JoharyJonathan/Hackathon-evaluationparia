@@ -1,12 +1,12 @@
 "use client"
 
 import Button from "../ui/Button"
-import { Bot, Menu } from "lucide-react"
+import { Bot } from "lucide-react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import type React from "react"
 
-export default function Navbar() {
+export default function Header() {
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -26,9 +26,11 @@ export default function Navbar() {
       </div>
 
       <div className="hidden md:flex items-center space-x-4">
-        <Button className="bg-purple-600 hover:bg-purple-700 text-white rounded-full" onClick={() => {}}>
-          Commencer
-        </Button>
+        <Link href="/login">
+          <Button className="bg-purple-600 hover:bg-purple-700 text-white rounded-full">
+            Commencer
+          </Button>
+        </Link>
       </div>
 
       {/* <Button variant="ghost" size="icon" className="md:hidden text-white" onClick={() => {}}>

@@ -7,11 +7,8 @@ export function AuthProvider({ children }) {
   const [accessToken, setAccessToken] = useState(null);
 
   useEffect(() => {
-    // Charger le token depuis localStorage au chargement de l'application
     const token = localStorage.getItem("accessToken");
-    if (token) {
-      setAccessToken(token);
-    }
+    if (token) setAccessToken(token);
   }, []);
 
   const login = (token) => {

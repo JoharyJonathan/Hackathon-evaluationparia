@@ -1,29 +1,12 @@
-import React from 'react';
-import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@material-ui/core';
-
-interface ModalProps {
-    open: boolean;
-    onClose: () => void;
-    title: string;
-    children: React.ReactNode;
-    onConfirm: () => void;
-}
-
-const Modal: React.FC<ModalProps> = ({ open, onClose, title, children, onConfirm }) => {
+export default function Modal({ isOpen, onClose, children }) {
+    if (!isOpen) return null;
     return (
-        <Dialog open={open} onClose={onClose} aria-labelledby="modal-title">
-            <DialogTitle id="modal-title">{title}</DialogTitle>
-            <DialogContent>{children}</DialogContent>
-            <DialogActions>
-                <Button onClick={onClose} color="primary">
-                    Cancel
-                </Button>
-                <Button onClick={onConfirm} color="primary">
-                    Confirm
-                </Button>
-            </DialogActions>
-        </Dialog>
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div className="bg-white p-6 rounded shadow-md max-w-lg w-full">
+          <button onClick={onClose} className="text-red-500 mb-4">Fermer</button>
+          {children}
+        </div>
+      </div>
     );
-};
-
-export default Modal;
+  }
+  
