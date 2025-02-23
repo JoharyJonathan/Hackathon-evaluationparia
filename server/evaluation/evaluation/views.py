@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.http import JsonResponse
 from .gemini_api import propose_exam_subject, evaluate_student_responses, get_exam_results, generate_performance_report, get_student_feedback
 
