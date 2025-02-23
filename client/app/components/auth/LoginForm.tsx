@@ -15,7 +15,7 @@ export default function LoginForm() {
     setSuccess("");
 
     try {
-      const response = await axios.post("http://localhost:8000/auth/login/", {
+      const response = await axios.post("http://localhost:8000/authe/login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
