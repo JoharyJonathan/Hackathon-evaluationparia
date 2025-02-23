@@ -1,26 +1,10 @@
-"""
-URL configuration for evaluation project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-from django.contrib import admin
-from django.urls import path, include
-from .views import generate_exam_view
-
+from django.urls import path
+from .views import propose_exam, evaluate_responses, get_results, performance_report, student_feedback
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('authe/', include('authe.urls')),
-    path("generate-exam/", generate_exam_view, name="generate-exam"),
+    path('api/exams/propose/', propose_exam, name='propose_exam'),
+    path('api/exams/<int:exam_id>/evaluate/', evaluate_responses, name='evaluate_responses'),
+    path('api/exams/<int:exam_id>/results/', get_results, name='get_results'),
+    path('api/exams/<int:exam_id>/reports/', performance_report, name='performance_report'),
+    path('api/exams/<int:exam_id>/feedback/', student_feedback, name='student_feedback'),
 ]
