@@ -5,6 +5,9 @@ class Matiere(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
     creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="matieres")
+    
+    def __str__(self):
+        return self.title
 
     def __str__(self):
         return self.title
@@ -16,7 +19,7 @@ class Exam(models.Model):
     deadline = models.DateTimeField()
     duration = models.IntegerField(help_text="Durée en minutes")
     creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="exams")
-    matiere = models.ForeignKey(Matiere, on_delete=models.CASCADE, related_name="exams")
+    matiere = models.ForeignKey(Matiere, on_delete=models.CASCADE, related_name="exams", blank=True, null=True)
 
     def __str__(self):
         return self.title
@@ -60,6 +63,10 @@ class Feedback(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
+<<<<<<< HEAD
         return f"Feedback for {self.response.exam.title}"
     
 # Removed redundant class definition
+=======
+        return f"Feedback for {self.response.exam.title}"
+>>>>>>> 1e191616653db32749de935fa801a83cf9b44938
