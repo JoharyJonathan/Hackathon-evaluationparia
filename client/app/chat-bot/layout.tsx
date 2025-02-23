@@ -1,4 +1,4 @@
-import { LayoutGrid, Settings, Users, SettingsIcon as Functions, Layers, Eye, BarChart2, X } from 'lucide-react'
+import { LayoutGrid } from 'lucide-react'
 import ScrollArea from "../components/ui/Scrollarea"
 import Button from "../components/ui/Button"
 
@@ -19,22 +19,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <LayoutGrid className="mr-2 h-4 w-4" />
               Tasks
             </Button>
-            <Button variant="ghost" className="w-full justify-start">
-              <Functions className="mr-2 h-4 w-4" />
-              Functions
-            </Button>
-            <Button variant="ghost" className="w-full justify-start">
-              <Layers className="mr-2 h-4 w-4" />
-              Integrations
-            </Button>
-            <Button variant="ghost" className="w-full justify-start">
-              <Users className="mr-2 h-4 w-4" />
-              Users
-            </Button>
-            <Button variant="ghost" className="w-full justify-start">
-              <Settings className="mr-2 h-4 w-4" />
-              Settings
-            </Button>
           </nav>
         </ScrollArea>
       </div>
@@ -45,33 +29,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           {/* Header */}
           <header className="h-14 border-b px-4 flex items-center justify-between">
             <h1 className="text-sm font-medium">Voice conversation</h1>
-            <div className="flex items-center gap-2">
-              <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
-                <X className="h-4 w-4" />
-              </Button>
-            </div>
           </header>
           {children}
-        </div>
-
-        {/* Right Panel */}
-        <div className="w-80 border-l">
-          <div className="h-14 border-b px-4 flex items-center">
-            <h2 className="font-medium">Conversation details</h2>
-          </div>
-          <div className="p-4">
-            <div className="flex gap-4 border-b pb-4">
-              <Button variant="secondary" size="sm" className="rounded-full">
-                Actions
-              </Button>
-              <Button variant="ghost" size="sm" className="rounded-full">
-                Customer
-              </Button>
-              <Button variant="ghost" size="sm" className="rounded-full">
-                Settings
-              </Button>
-            </div>
-          </div>
         </div>
       </div>
     </div>

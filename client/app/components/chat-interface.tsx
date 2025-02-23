@@ -37,7 +37,7 @@ export default function ChatInterface() {
   };
 
   return (
-    <div className="flex flex-col h-full max-w-md mx-auto border rounded-lg shadow-md bg-white">
+    <div className="flex flex-col h-full w-full max-w-3xl mx-auto border rounded-lg shadow-md bg-white">
       <ScrollArea className="flex-1 p-4 overflow-y-auto">
         <div className="space-y-4">
           {messages.map((message, index) => (
@@ -77,3 +77,4 @@ export default function ChatInterface() {
     </div>
   );
 }
+
