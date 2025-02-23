@@ -6,6 +6,9 @@ class Matiere(models.Model):
     description = models.TextField(blank=True, null=True)
     creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="matieres")
 
+    def __str__(self):
+        return self.title
+
 class Exam(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
@@ -59,10 +62,4 @@ class Feedback(models.Model):
     def __str__(self):
         return f"Feedback for {self.response.exam.title}"
     
-class Matiere(models.Model):
-    title = models.CharField(max_length=255)
-    description = models.TextField(blank=True, null=True)
-    creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="matieres")
-
-    def __str__(self):
-        return self.title
+# Removed redundant class definition
