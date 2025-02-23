@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function LoginForm() {
   const [username, setUsername] = useState("");
@@ -13,7 +14,7 @@ export default function LoginForm() {
     setSuccess("");
 
     try {
-      const response = await fetch("http://localhost:8000/authe/login/", {
+      const response = await fetch("http://localhost:8000/auth/login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,12 +40,13 @@ export default function LoginForm() {
       <h1 className="text-2xl font-bold mb-4">Connexion</h1>
       {error && <p className="text-red-500 mb-4">{error}</p>}
       {success && <p className="text-green-500 mb-4">{success}</p>}
-      <label className="block mb-2">Nom d&apos;utilisateur</label>
+      <label className="block mb-2">Nom d'utilisateur</label>
       <input 
         type="text"
         value={username}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
         className="w-full p-2 border rounded mb-4 bg-white text-black"
+        placeholder="Entrez votre nom d'utilisateur"
       />
       <label className="block mb-2">Mot de passe</label>
       <input 
@@ -52,10 +54,15 @@ export default function LoginForm() {
         value={password}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
         className="w-full p-2 border rounded mb-4 bg-white text-black"
+        placeholder="Entrez votre mot de passe"
       />
+      <p className="text-sm text-gray-600 mb-4">
+        Pas encore de compte ? <Link href="/register" className="text-purple-600 hover:underline">Inscrivez-vous</Link>
+      </p>
       <button type="submit" className="w-full bg-purple-600 text-white p-2 rounded">
         Se connecter
       </button>
     </form>
   );
 }
+

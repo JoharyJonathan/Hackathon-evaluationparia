@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function RegisterForm() {
@@ -62,6 +63,9 @@ export default function RegisterForm() {
         onChange={(e) => setPassword(e.target.value)}
         className="w-full p-2 border rounded mb-4"
       />
+      <p className="text-sm text-gray-600 mb-4">
+        Pas encore de compte ? <Link href="/register" className="text-purple-600 hover:underline">Inscrivez-vous</Link>
+      </p>
       <button type="submit" className="w-full bg-purple-600 text-white p-2 rounded">
         S'inscrire
       </button>
