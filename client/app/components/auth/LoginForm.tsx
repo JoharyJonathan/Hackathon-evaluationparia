@@ -25,7 +25,7 @@ export default function LoginForm() {
       if (response.status === 200) {
         setSuccess("Connexion réussie !");
         console.log("Token:", response.data.token);
-        router.push("/dashboard");
+        router.push("/chat-bot");
       } else {
         setError(response.data.error);
       }
