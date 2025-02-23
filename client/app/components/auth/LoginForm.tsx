@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import axios from "axios";
 
 export default function LoginForm() {
   const [username, setUsername] = useState("");
@@ -14,7 +15,7 @@ export default function LoginForm() {
     setSuccess("");
 
     try {
-      const response = await fetch("http://localhost:8000/auth/login/", {
+      const response = await axios.post("http://localhost:8000/auth/login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
