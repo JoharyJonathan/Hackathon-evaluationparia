@@ -65,7 +65,7 @@ export default function RegisterForm() {
         className="w-full p-2 border rounded mb-4"
       />
       <p className="text-sm text-gray-600 mb-4">
-        Pas encore de compte ? <Link href="/register" className="text-purple-600 hover:underline">Inscrivez-vous</Link>
+        Vous avez de compte ? <Link href="/login" className="text-purple-600 hover:underline">Se connecter</Link>
       </p>
       <button type="submit" className="w-full bg-purple-600 text-white p-2 rounded">
         S'inscrire
