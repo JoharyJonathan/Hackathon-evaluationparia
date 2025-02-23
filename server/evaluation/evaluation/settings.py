@@ -57,7 +57,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # Remplacez par l'URL de votre front-end Next.js
+    "http://localhost:3000",
 ]
 
 MIDDLEWARE = [
