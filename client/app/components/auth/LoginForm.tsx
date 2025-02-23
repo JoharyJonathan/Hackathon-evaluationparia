@@ -2,12 +2,14 @@
 import { useState } from "react";
 import Link from "next/link";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -16,23 +18,19 @@ export default function LoginForm() {
 
     try {
       const response = await axios.post("http://localhost:8000/authe/login/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
+        username,
+        password,
       });
 
-      if (response.ok) {
-        const data = await response.json();
+      if (response.status === 200) {
         setSuccess("Connexion réussie !");
-        console.log("Token:", data.token);
+        console.log("Token:", response.data.token);
+        router.push("/dashboard");
       } else {
-        const data = await response.json();
-        setError(data.error || "Une erreur s'est produite.");
+        setError(response.data.error);
       }
     } catch (error) {
-      setError("Une erreur s'est produite.");
+      setError(error.response?.data?.error);
     }
   };
 
@@ -66,4 +64,3 @@ export default function LoginForm() {
     </form>
   );
 }
-
