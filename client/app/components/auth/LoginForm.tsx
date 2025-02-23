@@ -44,14 +44,14 @@ export default function LoginForm() {
         type="text"
         value={username}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
-        className="w-full p-2 border rounded mb-4"
+        className="w-full p-2 border rounded mb-4 bg-white text-black"
       />
       <label className="block mb-2">Mot de passe</label>
       <input 
         type="password"
         value={password}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
-        className="w-full p-2 border rounded mb-4"
+        className="w-full p-2 border rounded mb-4 bg-white text-black"
       />
       <button type="submit" className="w-full bg-purple-600 text-white p-2 rounded">
         Se connecter
