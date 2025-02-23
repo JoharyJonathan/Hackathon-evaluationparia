@@ -8,6 +8,9 @@ def propose_exam(request):
         level = request.POST.get('level')
         field = request.POST.get('field')
         num_questions = request.POST.get('num_questions')
+        description = request.POST.get('description')
+        duration = request.POST.get('duration')
+        deadline = request.POST.get('deadline')
         
         try:
             result = propose_exam_subject(exam_type, subject, level, field, num_questions)

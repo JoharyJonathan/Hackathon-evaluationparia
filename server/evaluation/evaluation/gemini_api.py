@@ -1,7 +1,7 @@
 import requests
 from django.conf import settings
 
-def propose_exam_subject(exam_type, subject, level, field, num_questions):
+def propose_exam_subject(exam_type, subject, level, field, num_questions, description, duration, deadline):
     url = "https://api.gemini.com/v1/exams/propose"  # Remplacez par l'URL correcte de l'API
     headers = {
         "Authorization": f"Bearer {settings.GEMINI_API_KEY}",
@@ -12,7 +12,10 @@ def propose_exam_subject(exam_type, subject, level, field, num_questions):
         "subject": subject,
         "level": level,
         "field": field,
-        "num_questions": num_questions
+        "num_questions": num_questions,
+        "description": description,
+        "duration": duration,
+        "deadline": deadline
     }
     
     response = requests.post(url, json=payload, headers=headers)
