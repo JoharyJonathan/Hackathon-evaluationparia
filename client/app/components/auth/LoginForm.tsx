@@ -2,14 +2,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import axios from "axios";
-import { useRouter } from "next/router";
 
 export default function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,7 +23,6 @@ export default function LoginForm() {
       if (response.status === 200) {
         setSuccess("Connexion réussie !");
         console.log("Token:", response.data.token);
-        router.push("/chat-bot");
       } else {
         setError(response.data.error);
       }
@@ -58,9 +55,11 @@ export default function LoginForm() {
       <p className="text-sm text-gray-600 mb-4">
         Pas encore de compte ? <Link href="/register" className="text-purple-600 hover:underline">Inscrivez-vous</Link>
       </p>
-      <button type="submit" className="w-full bg-purple-600 text-white p-2 rounded">
-        Se connecter
-      </button>
+      <Link href="/dashboard">
+        <button type="button" className="w-full bg-purple-600 text-white p-2 rounded">
+          Se connecter
+        </button>
+      </Link>
     </form>
   );
 }

@@ -18,12 +18,16 @@ export default function Header() {
         <span className="text-gray-900 font-medium text-xl">EvalIA</span>
       </Link>
 
-      <div className="hidden md:flex items-center space-x-8">
-        <NavLink href="/fonctionnalites">Fonctionnalités</NavLink>
-        <NavLink href="/comment-ca-marche">Comment ça marche</NavLink>
-        <NavLink href="/exemples">Exemples</NavLink>
-        <NavLink href="/tarifs">Tarifs</NavLink>
-      </div>
+      <form className="hidden md:flex items-center space-x-2 w-full max-w-md">
+        <input
+          type="search"
+          className="flex-1 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Rechercher..."
+        />
+        <Button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white rounded-md px-4 py-2">
+          Rechercher
+        </Button>
+      </form>
 
       <div className="hidden md:flex items-center space-x-4">
         <Link href="/login">
@@ -37,15 +41,6 @@ export default function Header() {
         <Menu className="w-6 h-6" />
       </Button> */}
     </motion.nav>
-  )
-}
-
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <Link href={href} className="text-gray-900 hover:text-gray-800 transition-colors relative group">
-      {children}
-      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gray-900 transition-all group-hover:w-full" />
-    </Link>
   )
 }
 
