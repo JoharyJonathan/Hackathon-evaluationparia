@@ -13,7 +13,7 @@ export default function Header() {
       animate={{ y: 0 }}
       className="flex items-center justify-between px-6 py-4 backdrop-blur-sm border-b border-gray-200"
     >
-      <Link href="/" className="flex items-center space-x-2">
+      <Link href="/dashboard" className="flex items-center space-x-2">
         <Bot className="w-8 h-8 text-gray-900" />
         <span className="text-gray-900 font-medium text-xl">EvalIA</span>
       </Link>
@@ -30,9 +30,9 @@ export default function Header() {
       </form>
 
       <div className="hidden md:flex items-center space-x-4">
-        <Link href="/login">
+        <Link href="/dashboard">
           <Button className="bg-gray-900 hover:bg-gray-800 text-white rounded-full">
-            Commencer
+            Dashboard
           </Button>
         </Link>
       </div>
